@@ -12,10 +12,8 @@ public class VoiceThread implements Runnable {
 
 	@Override
 	public void run() {
-
 		voice.getVoice().speak(text);
 		voice.close();
-
 	}
 
 }

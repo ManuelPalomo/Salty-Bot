@@ -27,7 +27,21 @@ public class RecognizerManager {
         return this.recognizeBlockingResult().getHypothesis();
     }
     
-    public void recognizeNonBlockingResult(Set<SpeechResult> response){
-        
+    public void startNonBlockingRecognize(Set<SpeechResult> response){
+        Thread thread=new Thread(new RecognizerThread(recognizer, response));
+        thread.start();
+    }
+    
+    public void stopNonBlockingRecognize(){
+        RecognizerThread.stopThread=true;
+    }
+
+    public void setConfig(RecognizerManagerConfig config) throws IOException {
+        this.config = config;
+        this.recognizer=RecognizerFactory.createRecognizer(config);
+    }
+
+    public RecognizerManagerConfig getConfig() {
+        return config;
     }
 }

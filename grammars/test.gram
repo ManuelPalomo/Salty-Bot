@@ -1,0 +1,6 @@
+#JSGF V1.0;
+
+grammar button;
+public <command> = ( banana | <action> <target> );
+<action> = ( open | look |sing | fuck);
+<target> = ( notepad | wikipedia | thunderbird | pirates | yourself);
